@@ -1,14 +1,23 @@
 {
-  "name": "static-site",
+  "name": "readme-generator",
   "version": "1.0.0",
-  "description": "",
+  "description": "The goal of this project was to reate a command-line application that dynamically generates a professional README.md from a user's input using the Inquirer package (https://www.npmjs.com/package/inquirer).  The application is invoked with the following command in the terminal: node index.js",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Angela Tooley",
   "license": "ISC",
   "dependencies": {
     "inquirer": "^6.5.2"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adt315/readme-generator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/adt315/readme-generator/issues"
+  },
+  "homepage": "https://github.com/adt315/readme-generator#readme"
 }
