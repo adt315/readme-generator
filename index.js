@@ -4,7 +4,6 @@ var inquirer = require("inquirer");
 
 // array of questions for user
 const questions = [
-
 ];
 
 // function to write README file
@@ -18,3 +17,4 @@ function init() {
 
 // function call to initialize program
 init();
+
