@@ -27,99 +27,87 @@ const writeFileAsync = util.promisify(fs.writeFile);
 
 function promptUser() {
   return inquirer.prompt([
-    // THEN a quality, professional README.md is generated with the title of your project and sections entitled Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
-
-    // WHEN I click on the links in the Table of Contents
-    // THEN I am taken to the corresponding section of the README
 
     // The generated README includes the following sections:
     // Title
+    // 1 badge that's specific to the repository.
     // Description
-  // Table of Contents
-  // Installation
-  // Usage
-  // License
-  // Contributing
-  // Tests
-  // Questions
-
-    // sections of the README entitled 
-    // Description
+    // Table of Contents - WHEN I click on the links in the Table of Contents THEN I am taken to the corresponding section of the README
     // Installation
     // Usage
+    // License
     // Contributing
     // Tests
+    // Questions
 
 
     // project title
     {
       type: "input",
-      name: "name",
-      message: "What is your name?"
+      name: "title",
+      message: "What is the title of your project?"
     },
+    // WHEN I choose a license for my application from a list of options THEN a badge for that license is added near the top of the README and a notice is added to the section of the README entitled License that explains which license the application is covered under
+    // {
+     
+
+    // },
     // The generated README includes 1 badge that's specific to the repository.
-    {
-      type: "input",
-      name: "location",
-      message: "Where are you from?"
-    },
+    // {
+    
+
+    // },
     // description
     {
       type: "input",
-      name: "location",
-      message: "Where are you from?"
+      name: "description",
+      message: "Please type a brief description of your project."
     },
     // installation instructions
     {
       type: "input",
-      name: "hobby",
-      message: "What is your favorite hobby?"
+      name: "installation",
+      message: "Please type instructions for how to install your project."
     },
     // usage information
     {
       type: "input",
-      name: "food",
-      message: "What is your favorite food?"
+      name: "usage",
+      message: "Please type usage information about your project."
     },
     // contribution guidelines
     {
       type: "input",
-      name: "github",
-      message: "Enter your GitHub Username"
+      name: "contribution",
+      message: "What are the guidelines for contribution to this project?"
     },
     // test instructions
     {
       type: "input",
-      name: "linkedin",
-      message: "Enter your LinkedIn URL."
-    }
+      name: "test",
+      message: "Please type instructions for how to test your project."
+    },
+    // WHEN I enter my GitHub username THEN this is added to the section of the README entitled Questions, with a link to my GitHub profile
+    {
+      type: "input",
+      name: "GitHub",
+      message: "What is your GitHub username?"
+    },
+  // WHEN I enter my email address THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
+  {
+    type: "input",
+    name: "email",
+    message: "What is your email address?"
+  },
   ]);
 }
 
-WHEN I choose a license for my application from a list of options
-THEN a badge for that license is added near the top of the README and a notice is added to the section of the README entitled License that explains which license the application is covered under
-WHEN I enter my GitHub username
-THEN this is added to the section of the README entitled Questions, with a link to my GitHub profile
-WHEN I enter my email address
-THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
-
-
 function generateHTML(answers) {
   return `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <title>Document</title>
-</head>
-<body>
-  <div class="jumbotron jumbotron-fluid">
-  <div class="container">
+
     <h1 class="display-4">Hi! My name is ${answers.name}</h1>
     <p class="lead">I am from ${answers.location}.</p>
-    <h3>Example heading <span class="badge badge-secondary">Contact Me</span></h3>
+    <span class="badge badge-secondary">Contact Me</span></h3>
     <ul class="list-group">
       <li class="list-group-item">My GitHub username is ${answers.github}</li>
       <li class="list-group-item">LinkedIn: ${answers.linkedin}</li>
