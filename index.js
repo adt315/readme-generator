@@ -78,7 +78,7 @@ function promptUser() {
 promptUser()
   .then(function(data) {
 
-    var filename = data.title.toLowerCase().split(' ').join('') + ".md";
+    const filename = "generatedREADME.md"
 
     var markdown = 
     

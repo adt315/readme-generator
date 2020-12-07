@@ -52,22 +52,3 @@ THEN this information is added to the sections of the README and a quality, prof
     - Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by shields.io. You may not understand what they all represent now, but you will in time.
 
   * Contributing (how to make contributions so that other developers are more likely to use and contribute to the success of the project)
-    - If you created an application or package and would like other developers to contribute it, you will want to add guidelines for how to do so. The Contributor Covenant is an industry standard, but you can always write your own.
-
-  * Tests
-    - Go the extra mile and write tests for your application. Then provide examples on how to run them.
-
-  * Questions
-    - WHEN I enter my email address THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
-    - WHEN I enter my GitHub username THEN this is added to the section of the README entitled Questions, with a link to my GitHub profile
-  (how to report issues)
-
-
-explain and showcase what your application does, justify the technologies used, and even talk about some of the challenges you faced and features you hope to implement in the future.
-
-
-Submission on BCS
-You are required to submit the following:
-- A walkthrough video demonstrating the functionality of the application.
-- A sample README.md file for a project repository generated using your application.
-- The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
