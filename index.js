@@ -81,27 +81,40 @@ promptUser()
     var filename = data.title.toLowerCase().split(' ').join('') + ".md";
 
     var markdown = 
+    
+    // 1 badge that's specific to the repository.
+    // WHEN I click on the links in the Table of Contents THEN I am taken to the corresponding section of the README
+   
     `# ${data.title}
 
-    # ${data.license}
+    ## Badge
+    ${data.badge}
+
+    ## Description
+    ${data.description}
+
+    ## Table of Contents
+    ${data.contents}
+
+    ## Installation
+    ${data.installation}
+
+    ## Usage
+    ${data.usage}
+
+    ## License
+    ${data.license}
  
-    # ${data.badge}
+    ## Contributing
+    ${data.contribution}
  
-    # ${data.description}
+    ## Tests
+    ${data.test}
  
-    # ${data.contents}
+    ## Questions
+    ${data.GitHub}
  
-    # ${data.installation}
- 
-    # ${data.usage}
- 
-    # ${data.contribution}
- 
-    # ${data.test}
- 
-    # ${data.GitHub}
- 
-    # ${data.email}`;
+    ${data.email}`;
 
     fs.writeFile(filename, markdown, function(err){
       if (err) {
