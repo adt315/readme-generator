@@ -2,13 +2,6 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const util = require("util");
-// const generateMarkdown = require("./utils/generateMarkdown.js");
-
-const writeFileAsync = util.promisify(fs.writeFile);
-
-// // array of questions for user
-// const questions = [
-// ];
 
 function promptUser() {
   return inquirer.prompt([
@@ -82,33 +75,6 @@ function promptUser() {
   ]);
 }
 
- function generateMarkdown(data) {
-  return `
-   # ${data.title}
-
-   # ${data.license}
-
-   # ${data.badge}
-
-   # ${data.description}
-
-   # ${data.contents}
-
-   # ${data.installation}
-
-   # ${data.usage}
-
-   # ${data.contribution}
-
-   # ${data.test}
-
-   # ${data.GitHub}
-
-   # ${data.email}
-`;
-}
-
-//3
 promptUser()
   .then(function(data) {
 
@@ -136,82 +102,12 @@ promptUser()
     # ${data.GitHub}
  
     # ${data.email}`;
-    fs.writeFile(filename, markdown, function(err){
 
+    fs.writeFile(filename, markdown, function(err){
       if (err) {
         return console.log(err);
       }
-
       console.log("README is created");
-
     })
   });
-//     const newREADME = generateMarkdown(answers);
-
-//     return writeFileAsync("./utils/generateMarkdown.js", newREADME);
-//   })
-//   .then(function() {
-//     console.log("README is created");
-//   })
-//   .catch(function(err) {
-//     console.log(err);
-//   });
-
-
-// ////Regular Ending///////
-//1
-// promptUser()
-//   .then(function(answers) {
-//     const html = generateHTML(answers);
-
-//     return writeFileAsync("index.html", html);
-//   })
-//   .then(function() {
-//     console.log("Successfully wrote to index.html");
-//   })
-//   .catch(function(err) {
-//     console.log(err);
-//   });
-
-//2
-// promptUser()
-//   .then(function(answers) {
-//     const newREADME = generateMarkdown(answers);
-
-//     return writeFileAsync("./utils/generateMarkdown.js", newREADME);
-//   })
-//   .then(function() {
-//     console.log("README is created");
-//   })
-//   .catch(function(err) {
-//     console.log(err);
-//   });
-
-
-
-
-
-// // function to write README file - generateMarkdown function 
-// function writeToFile(fileName, data) {
-// }
-
-// // function to initialize program
-// function init() {
-//   inquirer.prompt(questions)
-//   .then(answers => {
-//     console.log(`Answers -` answers),
-//   });
-// }
-
-// // function call to initialize program
-// init();
-
-
-
-
-
-
-
-
-
   
