@@ -2,8 +2,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const util = require("util");
-// const axios = require("axios");
-// const generateMarkdown = require("./util/generateMarkdown.js");
+// const generateMarkdown = require("./utils/generateMarkdown.js");
 
 const writeFileAsync = util.promisify(fs.writeFile);
 
@@ -74,72 +73,121 @@ function promptUser() {
       name: "GitHub",
       message: "What is your GitHub username?"
     },
-  // WHEN I enter my email address THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
-  {
-    type: "input",
-    name: "email",
-    message: "What is your email address?"
-  }
+    // WHEN I enter my email address THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
+    {
+      type: "input",
+      name: "email",
+      message: "What is your email address?"
+    }
   ]);
 }
 
- function generateMarkdown(answers) {
-   return `
-    # ${answers.title}
+ function generateMarkdown(data) {
+  return `
+   # ${data.title}
 
-    # ${answers.license}
+   # ${data.license}
 
-    # ${answers.badge}
+   # ${data.badge}
 
-    # ${answers.description}
+   # ${data.description}
 
-    # ${answers.contents}
+   # ${data.contents}
 
-    # ${answers.installation}
+   # ${data.installation}
 
-    # ${answers.usage}
+   # ${data.usage}
 
-    # ${answers.contribution}
+   # ${data.contribution}
 
-    # ${answers.test}
+   # ${data.test}
 
-    # ${answers.GitHub}
+   # ${data.GitHub}
 
-    # ${answers.email}
+   # ${data.email}
 `;
- }
+}
+
+//3
+promptUser()
+  .then(function(data) {
+
+    var filename = data.title.toLowerCase().split(' ').join('') + ".md";
+
+    var markdown = 
+    `# ${data.title}
+
+    # ${data.license}
+ 
+    # ${data.badge}
+ 
+    # ${data.description}
+ 
+    # ${data.contents}
+ 
+    # ${data.installation}
+ 
+    # ${data.usage}
+ 
+    # ${data.contribution}
+ 
+    # ${data.test}
+ 
+    # ${data.GitHub}
+ 
+    # ${data.email}`;
+    fs.writeFile(filename, markdown, function(err){
+
+      if (err) {
+        return console.log(err);
+      }
+
+      console.log("README is created");
+
+    })
+  });
+//     const newREADME = generateMarkdown(answers);
+
+//     return writeFileAsync("./utils/generateMarkdown.js", newREADME);
+//   })
+//   .then(function() {
+//     console.log("README is created");
+//   })
+//   .catch(function(err) {
+//     console.log(err);
+//   });
+
 
 // ////Regular Ending///////
-promptUser()
-  .then(function(answers) {
-    const html = generateMarkdown(answers);
+//1
+// promptUser()
+//   .then(function(answers) {
+//     const html = generateHTML(answers);
 
-    return writeFileAsync("generatedREADME", html);
-  })
-  .then(function() {
-    console.log("README is created");
-  })
-  .catch(function(err) {
-    console.log(err);
-  });
+//     return writeFileAsync("index.html", html);
+//   })
+//   .then(function() {
+//     console.log("Successfully wrote to index.html");
+//   })
+//   .catch(function(err) {
+//     console.log(err);
+//   });
 
-  
-// //////BONUS Ending/////////////
-// async function init() {
-//     console.log("hi")
-//     try {
-//       const answers = await promptUser();
-  
-//       const html = generateHTML(answers);
-  
-//       await writeFileAsync("index.html", html);
-  
-//       console.log("README is created");
-//     } catch(err) {
-//       console.log(err);
-//     }
-//   } 
-//   init();
+//2
+// promptUser()
+//   .then(function(answers) {
+//     const newREADME = generateMarkdown(answers);
+
+//     return writeFileAsync("./utils/generateMarkdown.js", newREADME);
+//   })
+//   .then(function() {
+//     console.log("README is created");
+//   })
+//   .catch(function(err) {
+//     console.log(err);
+//   });
+
+
 
 
 
