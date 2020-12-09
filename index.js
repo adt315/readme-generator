@@ -54,8 +54,8 @@ function promptUser() {
     //Questions
     {
       type: "input",
-      name: "GitHub",
-      message: "What is your GitHub username?"
+      name: "github",
+      message: "What is your GitHub address?"
     },
     {
       type: "input",
@@ -83,7 +83,6 @@ promptUser()
     
 `# ${data.title}
 
-## URL
 ${data.url}
 
 ## License
@@ -95,11 +94,11 @@ ${data.description}
 ${data.shots}
   
 ## Table of Contents
-*  Installation 
-*  Usage 
-*  Contribution
-*  Test 
-*  Questions 
+* Installation 
+* Usage 
+* Contribution
+* Test 
+* Questions 
   
 ## Installation
 ${data.installation}
@@ -115,8 +114,9 @@ ${data.test}
   
 ## Questions
 For questions please contact the project creator:
-  ${data.GitHub}
-  ${data.email}`;
+* ${data.github}
+* ${data.email}
+`;
   
 fs.writeFile(filename, markdown, function(err){
   if (err) {
