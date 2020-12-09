@@ -24,7 +24,7 @@ function promptUser() {
     {
       type: "input",
       name: "description",
-      message: "Please give a brief description of your project."
+      message: "Please give a brief description of your project and include the technologies used."
     },
     {
       type: "input",
