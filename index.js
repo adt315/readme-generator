@@ -1,72 +1,62 @@
-
 const inquirer = require("inquirer");
 const fs = require("fs");
 const util = require("util");
 
 function promptUser() {
   return inquirer.prompt([
-    // project title
+    //Prompts for user input
     {
       type: "input",
       name: "title",
       message: "What is the title of your project?"
     },
-    // WHEN I choose a license for my application from a list of options THEN a badge for that license is added near the top of the README and a notice is added to the section of the README entitled License that explains which license the application is covered under
     {
       type: "input",
+      name: "url",
+      message: "What is the URL for your deployed project?"
+    },
+    {
+      type: "list",
       name: "license",
-      message: "license"
+      message: "Please select a license.",
+      choices: ["Apache", "GNU", "MIT"]
     },
-    // The generated README includes 1 badge that's specific to the repository.
-    {
-      type: "input",
-      name: "badge",
-      message: "badge"
-    },
-    // description
     {
       type: "input",
       name: "description",
       message: "Please give a brief description of your project."
     },
-    // table of contents
     {
       type: "input",
-      name: "contents",
-      message: "Please list your Table of Contents."
+      name: "shots",
+      message: "Please provide a screenshot link."
     },
-    // installation instructions
     {
       type: "input",
       name: "installation",
       message: "Please type instructions for how to install your project."
     },
-    // usage information
     {
       type: "input",
       name: "usage",
       message: "What are the usage guidelines for your project?"
     },
-    // contribution guidelines
     {
       type: "input",
       name: "contribution",
       message: "Who contributed to this project? What are the guidelines for contributing to this project?"
     },
-    // test instructions
     {
       type: "input",
       name: "test",
       message: "Please type instructions for how to test your project."
     },
-    //QUESTIONS
-    // WHEN I enter my GitHub username THEN this is added to the section of the README entitled Questions, with a link to my GitHub profile
+    //Questions
     {
       type: "input",
       name: "GitHub",
       message: "What is your GitHub username?"
     },
-    // WHEN I enter my email address THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
     {
       type: "input",
       name: "email",
@@ -77,50 +67,61 @@ function promptUser() {
 
 promptUser()
   .then(function(data) {
+    //Create license badge based on input
+    let badge = "https://img.shields.io/badge/license-MIT-green";
+    if (data.license == "Apache") {
+      badge = "https://img.shields.io/badge/license-Apache-blue";
+    } else if (data.license == "GNU") {
+      badge = "https://img.shields.io/badge/license-GNU-HSL(20%C2%B0%2C%20100%25%2C%2050%25)";
+    } else {
+      badge = "https://img.shields.io/badge/license-MIT-green"
+    };
 
     const filename = "generatedREADME.md"
 
     var markdown = 
     
-    // 1 badge that's specific to the repository.
-    // WHEN I click on the links in the Table of Contents THEN I am taken to the corresponding section of the README
-   
-    `# ${data.title}
+`# ${data.title}
 
-    ## Badge
-    ${data.badge}
+## URL
+${data.url}
 
-    ## Description
-    ${data.description}
-
-    ## Table of Contents
-    ${data.contents}
-
-    ## Installation
-    ${data.installation}
-
-    ## Usage
-    ${data.usage}
-
-    ## License
-    ${data.license}
- 
-    ## Contributing
-    ${data.contribution}
- 
-    ## Tests
-    ${data.test}
- 
-    ## Questions
-    ${data.GitHub}
- 
-    ${data.email}`;
-
-    fs.writeFile(filename, markdown, function(err){
-      if (err) {
-        return console.log(err);
-      }
-      console.log("README is created");
-    })
-  });
+## License
+![badge](${badge}) 
   
+## Description
+${data.description}
+
+${data.shots}
+  
+## Table of Contents
+*  Installation 
+*  Usage 
+*  Contribution
+*  Test 
+*  Questions 
+  
+## Installation
+${data.installation}
+  
+## Usage
+${data.usage}
+  
+## Contribution
+${data.contribution}
+  
+## Test
+${data.test}
+  
+## Questions
+For questions please contact the project creator:
+  ${data.GitHub}
+  ${data.email}`;
+  
+fs.writeFile(filename, markdown, function(err){
+  if (err) {
+    return console.log(err);
+  }
+    console.log("README is created");
+  })
+});
