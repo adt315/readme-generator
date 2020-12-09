@@ -34,12 +34,12 @@ function promptUser() {
     {
       type: "input",
       name: "installation",
-      message: "Please type instructions for how to install your project."
+      message: "How do you install your project?"
     },
     {
       type: "input",
       name: "usage",
-      message: "What are the usage guidelines for your project?"
+      message: "How do you use your project?"
     },
     {
       type: "input",
@@ -94,11 +94,11 @@ ${data.description}
 ${data.shots}
   
 ## Table of Contents
-* Installation 
-* Usage 
-* Contribution
-* Test 
-* Questions 
+* [Installation](#installation)
+* [Usage](#usage) 
+* [Contribution](#contribution) 
+* [Test](#test) 
+* [Questions](#questions) 
   
 ## Installation
 ${data.installation}
